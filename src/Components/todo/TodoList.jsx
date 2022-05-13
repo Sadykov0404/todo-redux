@@ -6,7 +6,7 @@ const TodoList = () => {
   const todos = useSelector((state) => state);
   return (
     <>
-      <div>
+      <div className="border-2 mt-3">
         {todos?.map((todo, i) => {
           return <TodoItem key={todo.id} todo={todo} index={i + 1} />;
         })}

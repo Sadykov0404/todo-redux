@@ -9,7 +9,7 @@ export let reducer = (state = todos, action) => {
       return newTodos;
     case "DELETE_TODO":
       newTodos = [...state];
-      newTodos = newTodos.filter((todo) => todo.id != action.payload);
+      newTodos = newTodos.filter((todo) => todo.id !== action.payload);
       return newTodos;
     default:
       return state;
