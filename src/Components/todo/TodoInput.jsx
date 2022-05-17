@@ -29,7 +29,7 @@ const TodoInput = () => {
       <input
         type="time"
         value={term}
-        onChange={(e) => setTerm(e.target.value)}
+        onChange={(e) => setTerm(`${e.target.value}:00`)}
         placeholder="Please type your time"
         className="p-3 focus:outline-none border-2"
       />

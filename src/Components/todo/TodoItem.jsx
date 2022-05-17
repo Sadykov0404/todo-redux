@@ -2,23 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../../redux/actions";
 
-const TodoItem = ({ todo, index }) => {
-  const date = new Date();
-  const [minute, setMinute] = useState("");
-  const [hours, setHours] = useState("");
-  const [terms, setTerms] = useState(0);
+const TodoItem = ({ todo, index, bool }) => {
+  // const date = new Date();
+  // const [minute, setMinute] = useState("");
+  // const [hours, setHours] = useState("");
+  // const [terms, setTerms] = useState(0);
   const [task, setTask] = useState(false);
-  // const [real, setReal] = useState(false);
-  useEffect(() => {
-    setMinute((date.getMinutes() < 10 ? 0 : "") + date.getMinutes());
-    setHours((date.getHours() < 10 ? 0 : "") + date.getHours());
-    setTerms(hours + minute);
-  }, []);
-  // setTimeout(() => {
+
+  // useEffect(() => {
+  //   setMinute((date.getMinutes() < 10 ? 0 : "") + date.getMinutes());
+  //   setHours((date.getHours() < 10 ? 0 : "") + date.getHours());
   //   setTerms(hours + minute);
-  // }, 1000);
+  // }, [date]);
+  // let newTerm = todo.term.replace(":", "");
   let dispatch = useDispatch();
-  let newTerm = todo.term.replace(":", "");
 
   console.log("test");
   return (
@@ -28,14 +25,7 @@ const TodoItem = ({ todo, index }) => {
         <div className="font-semibold">№{index}</div>
         <div className="w-100">{todo.title}</div>
         <p>Created: {todo.date}</p>
-        <div>
-          {/* {newTerm <= terms ? <p>Srok tugadi</p> : <p>Term: {todo.term}</p>} */}
-          {newTerm < terms || newTerm === terms ? (
-            <p>block</p>
-          ) : (
-            <p>{todo.term}</p>
-          )}
-        </div>
+        <div>{bool ? <p>blocked</p> : <p>{todo.term}</p>}</div>
 
         <button
           onClick={() => dispatch(deleteTodo(todo.id))}
